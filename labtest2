@@ -1,0 +1,37 @@
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+import matplotlib.pyplot as plt
+cancer_data = load_breast_cancer()
+df = pd.DataFrame(cancer_data.data, columns=cancer_data.feature_names)
+df['target'] = cancer_data.target
+df.describe()
+df.isnull().sum()
+X = df.drop(columns=['target'])
+y = df['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+plt.figure(figsize=(15, 12))
+sns.heatmap(df.corr(), annot=False, cmap='coolwarm')
+plt.title('Correlation Matrix')
+plt.show()
+knn = KNeighborsClassifier
+
+
+
+import numpy as np
+def func(x):
+    longer_than5 = [s for s in arr if len(s)>5]
+    if longer5:
+        np.flip(x)
+    else:
+        print("no result")
+arr = np.array(["first", "second", "third", "fourth", "fifth"])
+np.flip(arr)
